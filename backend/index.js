@@ -1,13 +1,19 @@
-//importando as funcionalidades do express
 const express = require('express');
-//variável que vai armazenar minha apricação
 const app =  express();
-//criando a primeira rota
-app.get('/',(request, response)=>{ 
+//converte o json em objeto javascript
+app.use(express.json());
+/* TIPO DE PARAMETROS
+ *
+ * Query Params: Parâmetros noemados enviandos na rota após "?" (filtros, paginação)
+ * ROute Params: Parâmetros utilizados para identificar recursos 
+ * Request Body: Corpo da requisição, utilizado para criar ou alterar recurso
+ */
+
+app.post('/users',(request, response)=>{ 
+    console.log(request.body);
     return response.json({
         evento:'Semana OmniStack 11.0',
-        aluno: 'Weslley Leocadio'
+        aluno: 'Weslley Silva'
     })
 });
-//a aplicação vai ouvir a porta 3333
 app.listen(3333);
